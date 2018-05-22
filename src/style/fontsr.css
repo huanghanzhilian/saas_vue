@@ -1,0 +1,43 @@
+@font-face {
+  font-family: 'iconfont';  /* project id 674560 */
+  src: url('//at.alicdn.com/t/font_674560_4mhapmxx6vg6i529.eot');
+  src: url('//at.alicdn.com/t/font_674560_4mhapmxx6vg6i529.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_674560_4mhapmxx6vg6i529.woff') format('woff'),
+  url('//at.alicdn.com/t/font_674560_4mhapmxx6vg6i529.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_674560_4mhapmxx6vg6i529.svg#iconfont') format('svg');
+}
+.iconfont {
+    font-family: "iconfont" !important;
+    font-size: .28rem;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/*记录*/
+.icon-jilu:before {
+    content: "\e628";
+}
+
+/*钻石*/
+
+.icon-zuanshi:before {
+    content: "\e619";
+}
+
+/*go*/
+.icon-go:before {
+    content: "\e694";
+}
+
+/*搜索*/
+.icon-sousuo:before {
+    content: "\e636";
+}
+
+
+/*日期*/
+.icon-riqi:before {
+    content: "\e6dc";
+}
+
