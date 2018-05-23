@@ -55,7 +55,6 @@ export default {
       //获取数据
       await indexOrderList().then(res => {
         this.commoArray = res.data;
-        console.log(this.commoArray)
       })
     },
   },
@@ -116,10 +115,9 @@ export default {
     border-bottom: solid .025rem #e7e7e7;
     .content_top_title {
       font-size: .28rem;
-      color: #606060;
     }
     .content_mone {
-      color: #606060;
+      color: $fontA;
     }
   }
 
@@ -146,7 +144,9 @@ export default {
         }
         .item_describe {
           font-size: .24rem;
-          color: #929292;
+          .text_yellow{
+            color:$fontC;
+          }
         }
       }
 

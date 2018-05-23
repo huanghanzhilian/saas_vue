@@ -18,7 +18,19 @@ export const indexOrderList = () => {
 
 //积分记录
 export const getExchangeList = (pageNum, pageSize) => {
-  return http.fetchGet('/api/exchange/list',{ pageNum, pageSize })
+  return http.fetchGet('/api/exchange/list', { pageNum, pageSize })
+};
+
+
+//积分详情接口
+export const getActivityDetail = (id) => {
+  return http.fetchGet('/api/activity/detail', { id })
+};
+
+
+//商品列表以及搜索接口
+export const getProductList = (pageNum, pageSize, key) => {
+  return http.fetchGet('/api/product/list', { pageNum, pageSize, key })
 };
 
 

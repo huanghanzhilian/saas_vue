@@ -78,13 +78,50 @@ module.exports = {
       "row|12": [{
         "describe": "@cparagraph(1, 3)",
         "id": "@id",
-        "time":"@datetime()",
+        "time": "@datetime()",
         "roadcastImg": "@IMG(300x160,@color())",
         "goldcoin": "@natural(0, 100)",
-        "status":"@boolean"
+        "status": "@boolean"
       }]
     }
   }),
 
+  //积分商品详情接口
+  api_activity_detail: Mock.mock({
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "originalIntegral": "@natural(0, 100)",
+      "newIntegral": "@natural(0, 100)",
+      "name": "@csentence(3, 5)",
+      "newTime": "@date('yyyy-MM-dd')",
+      "oldTime": "@date('yyyy-MM-dd')",
+      "id": "@id",
+      "roadcastImg": "@IMG(300x160,@color())",
+      "status": "@boolean",
+      "describe": "@cparagraph(1, 3)",
+      "goldcoin": "@natural(0, 100)",
+    }
+  }),
+
+  //所以积分列表接口
+  api_product_list: Mock.mock({
+    "code": 0,
+    "msg": "success",
+    "data": {
+      "pageAmount": 114,
+      "pageNow": 1,
+      "pageSize": 8,
+      "recordAmount": 911,
+      "row|12": [{
+        "describe": "@cparagraph(1, 3)",
+        "id": "@id",
+        "time": "@datetime()",
+        "roadcastImg": "@IMG(300x160,@color())",
+        "goldcoin": "@natural(0, 100)",
+        "status": "@boolean"
+      }]
+    }
+  }),
 
 };

@@ -2,20 +2,20 @@
   <div class="activityDetail_container">
     <div class="activity_top">
       <div class="activity_top_wrap">
-        <img src="http://static.samuredwonder.com/image/video/cover/FtZ__659zWCVt04Y7DgrDDaQwZ8y">
+        <img :src="detailsObject.roadcastImg">
         <div class="content">
           <div class="order_name_box">
-            <div class="name">酷我音乐豪华VIP券</div>
+            <div class="name">{{detailsObject.name}}</div>
             <div class="order_number">
-              <span class="number1"><span class="fangda">2</span>积分</span>
-              <span class="number2">￥5.0</span>
+              <span class="number1"><span class="fangda">{{detailsObject.newIntegral}}</span>积分</span>
+              <span class="number2">￥{{detailsObject.originalIntegral}}</span>
             </div>
           </div>
           <div class="linese">
             <div class="linese_left">
               <i class="iconfont icon-riqi"></i> 有效期
             </div>
-            <div class="linese_right">2018-04-25 至 2018-04-26</div>
+            <div class="linese_right">{{detailsObject.newTime}} 至 {{detailsObject.oldTime}}</div>
           </div>
         </div>
       </div>
@@ -38,21 +38,20 @@
         <li class="text_item">手dfdsafsafafrdhryr奥卡福叫法叫</li>
       </ol>
     </div>
-
     <div class="confirm_wrap">
-      <span class="confirm_btn">马上兑换</span>
+      <span class="confirm_btn" :class="{active:detailsObject.status}">{{detailsObject.status?'马上兑换':'已兑换'}}</span>
     </div>
   </div>
 </template>
 <script>
 import { mapMutations, mapState } from 'vuex'
-
+import { getActivityDetail } from 'src/service/getData'
 
 export default {
   //数据
   data() {
     return {
-
+      detailsObject: {}, //商品详情信息
     }
   },
   //创建前
@@ -61,7 +60,7 @@ export default {
   },
   //创建完毕状态
   created() {
-    //this.openid = this.$route.query.openid;
+    this.id = this.$route.query.id;
     //this.productId = this.$route.query.productId;
   },
 
@@ -108,7 +107,14 @@ export default {
   //方法
   methods: {
     async initData() {
+      if (!this.id) {
+        alert('参数有误')
+        return
+      }
       //获取数据
+      let res = await getActivityDetail(this.id);
+      this.detailsObject = res.data
+      console.log(res)
     },
   },
 
@@ -122,7 +128,7 @@ export default {
 <style lang="scss" scoped>
 @import 'src/style/mixin';
 
-.activityDetail_container{
+.activityDetail_container {
   padding-bottom: 1.6rem;
 }
 
@@ -146,14 +152,15 @@ export default {
           padding-bottom: .2rem;
           border-bottom: solid .025rem #ccc;
           .number1 {
-            color: #3d66e0;
+            color: $fontC;
             .fangda {
+              color: $fontC;
               font-size: .44rem;
               margin-right: .08rem;
             }
           }
           .number2 {
-            color: #bababa;
+            color: $fontA;
             text-decoration: line-through;
           }
         }
@@ -162,7 +169,12 @@ export default {
       .linese {
         @include fj;
         padding: .15rem 0 0 0;
-        color: #6f6b72;
+        .linese_left{
+          color: $fontB;
+        }
+        .linese_right{
+          color: $fontB;
+        }
       }
     }
   }
@@ -200,7 +212,7 @@ export default {
 }
 
 
-.confirm_wrap{
+.confirm_wrap {
   position: fixed;
   width: 100%;
   bottom: 0;
@@ -208,17 +220,20 @@ export default {
   background-color: #fff;
   padding: .2rem;
   text-align: center;
-  box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
+  box-shadow: 0 -0.02667rem 0.05333rem rgba(0, 0, 0, .1);
 }
-.confirm_btn{
+
+.confirm_btn {
   display: inline-block;
   width: 5.9rem;
   height: .9rem;
   line-height: .9rem;
-  color:#fff;
+  color: #fff;
   border-radius: .4rem;
-  background-color: #4169e1;
+  background-color: $fontA;
+  &.active {
+    background-color: $fontD;
+  }
 }
-
 
 </style>

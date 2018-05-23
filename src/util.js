@@ -4,7 +4,7 @@ export default {
     //图片加载错误设置默认图片
     Vue.prototype.imgError = function(e) {
       var img = e.currentTarget;
-      img.src = require('./images/img-video-default.jpg');
+      img.src = require('./images/default.png');
     }
     //图片加载错误设置默认icon
     Vue.prototype.imgErrorIcon = function(e) {
