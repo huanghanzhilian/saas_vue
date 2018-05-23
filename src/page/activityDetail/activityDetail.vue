@@ -16,14 +16,10 @@
               <i class="iconfont icon-riqi"></i> 有效期
             </div>
             <div class="linese_right">2018-04-25 至 2018-04-26</div>
-            
           </div>
         </div>
-          
-
       </div>
     </div>
-
     <div class="activity_content">
       <div class="title">商品详情</div>
       <div class="describe">奥利奥（Oreo）Mini原味小饼干零食 55g（新老包装随机发货） </div>
@@ -34,7 +30,6 @@
         <li class="text_item">手dfdsafsafafrdhryr奥卡福叫法叫</li>
       </ol>
     </div>
-
     <div class="activity_content">
       <div class="title">重要声明</div>
       <ol class="text_list text_listOne">
@@ -44,6 +39,9 @@
       </ol>
     </div>
 
+    <div class="confirm_wrap">
+      <span class="confirm_btn">马上兑换</span>
+    </div>
   </div>
 </template>
 <script>
@@ -124,38 +122,44 @@ export default {
 <style lang="scss" scoped>
 @import 'src/style/mixin';
 
-.activity_top{
-  .activity_top_wrap{
+.activityDetail_container{
+  padding-bottom: 1.6rem;
+}
+
+
+.activity_top {
+  .activity_top_wrap {
     background-color: #fff;
     margin-bottom: .18rem;
-    img{
+    img {
       width: 100%;
       height: 3.5rem;
     }
-    .content{
+    .content {
       padding: .2rem;
-      .order_name_box{
-        .name{
+      .order_name_box {
+        .name {
           font-weight: 600;
-          font-size:.34rem;
+          font-size: .34rem;
         }
-        .order_number{
+        .order_number {
           padding-bottom: .2rem;
           border-bottom: solid .025rem #ccc;
-          .number1{
+          .number1 {
             color: #3d66e0;
-            .fangda{
-              font-size:.44rem;
+            .fangda {
+              font-size: .44rem;
+              margin-right: .08rem;
             }
           }
-          .number2{
+          .number2 {
             color: #bababa;
-             text-decoration:line-through;
+            text-decoration: line-through;
           }
         }
       }
 
-      .linese{
+      .linese {
         @include fj;
         padding: .15rem 0 0 0;
         color: #6f6b72;
@@ -165,34 +169,55 @@ export default {
 }
 
 
-.activity_content{
+.activity_content {
   background-color: #fff;
   margin-bottom: .18rem;
   padding: .2rem;
   color: #10202f;
-  .title{
-    font-size:.3rem;
+  .title {
+    font-size: .3rem;
     font-weight: 600;
     margin-bottom: .18rem;
   }
-  .title2{
+  .title2 {
     margin-bottom: .05rem;
   }
-  .describe{
+  .describe {
     margin-bottom: .18rem;
   }
-  .text_list{
-
+  .text_list {
+    line-height: .44rem;
     list-style-type: decimal;
     padding-left: .31rem;
-    &.text_listOne{
+    &.text_listOne {
       color: #6e767c;
     }
-    a{
+    a {
       color: #5871e1;
       text-decoration: underline;
     }
   }
+}
+
+
+.confirm_wrap{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  padding: .2rem;
+  text-align: center;
+  box-shadow: 0 -0.02667rem 0.05333rem rgba(0,0,0,.1);
+}
+.confirm_btn{
+  display: inline-block;
+  width: 5.9rem;
+  height: .9rem;
+  line-height: .9rem;
+  color:#fff;
+  border-radius: .4rem;
+  background-color: #4169e1;
 }
 
 

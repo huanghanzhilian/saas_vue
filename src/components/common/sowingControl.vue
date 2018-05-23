@@ -25,7 +25,7 @@ export default {
   //数据
   data() {
     return {
-        roadcastArray:[],//轮播数据
+      roadcastArray: [], //轮播数据
     }
   },
   //需要使用的模块
@@ -49,12 +49,13 @@ export default {
     async initData() {
       //获取轮播图数据
       await roadcastList().then(res => {
-        this.roadcastArray=res.data;
-      }).then(()=>{
+        this.roadcastArray = res.data;
+      }).then(() => {
         //初始化swiper
         new Swiper('.swiper-container', {
           pagination: '.swiper-pagination',
-          loop: true
+          autoplay: 3000, //可选选项，自动滑动
+          //loop: true,
         });
       })
     },
@@ -98,7 +99,7 @@ export default {
   destroyed() {
 
   },
-  
+
 }
 
 </script>

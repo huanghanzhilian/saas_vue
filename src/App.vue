@@ -76,7 +76,10 @@ export default {
   width: 100%;
 }
 
-.router-fade-enter-active,
+/*淡入激活
+  淡入淡出
+*/
+/*.router-fade-enter-active,
 .router-fade-leave-active {
   transition: opacity .3s;
 }
@@ -85,6 +88,21 @@ export default {
 .router-fade-leave-active {
   //display: none;
   opacity: 0;
+}*/
+.router-fade{
+  /*position: absolute;left:0;right: 0;*/
 }
+.router-fade-enter-active {
+  transition: all 1.2s ease;
+}
+.router-fade-leave-active {
 
+  transition: all .1s cubic-bezier(2.0, 0.5, 0.8, 1.0);
+}
+.router-fade-enter, .router-fade-leave-to
+{
+  /*left:0;right: 0;*/
+  /*transform: translateX(50px);*/
+  opacity: 0;
+}
 </style>

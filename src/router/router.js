@@ -21,7 +21,7 @@ export default [{
       path: '/',
       name: 'msite',
       component: msite,
-      //meta: { keepAlive: true },
+      meta: { keepAlive: true },
     },
     //兑换列表页
     {
