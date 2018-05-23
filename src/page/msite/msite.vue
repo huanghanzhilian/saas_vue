@@ -1,14 +1,19 @@
 <template>
   <div class="msite_container">
-    <sowing-control></sowing-control>
-    <navtop-control></navtop-control>
-    <!-- 中间不规则布局 s  -->
-    <threeControl></threeControl>
-    <!-- 中间不规则布局 e -->
+    <div class="msite_wrap" v-if="pageStatus">
+      <sowing-control></sowing-control>
+      <navtop-control></navtop-control>
+      <!-- 中间不规则布局 s  -->
+      <threeControl></threeControl>
+      <!-- 中间不规则布局 e -->
 
-    <!-- 商品列表 s -->
-    <indexlist-control></indexlist-control>
-    <!-- 商品列表 e -->
+      <!-- 商品列表 s -->
+      <indexlist-control></indexlist-control>
+      <!-- 商品列表 e -->
+    </div>
+    <div class="loading" v-else>
+      <img src="../../images/loading.gif">
+    </div>
   </div>
 </template>
 <script>
@@ -18,14 +23,14 @@ import threeControl from 'src/components/common/threeControl'
 import indexlistControl from 'src/components/common/indexlistControl'
 import navtopControl from 'src/components/common/navtopControl'
 
-import { roadcastList } from 'src/service/getData'
+import { getLayoutControl } from 'src/service/getData'
 
 
 export default {
   //数据
   data() {
     return {
-
+      pageStatus:false,
     }
   },
   //创建前
@@ -85,10 +90,10 @@ export default {
   //方法
   methods: {
     async initData() {
-      //获取轮播图数据
-      // await roadcastList().then(res => {
-      //   console.log(res)
-      // })
+      //获取布局数据
+      await getLayoutControl().then(res => {
+        this.pageStatus=true;
+      })
     },
   },
 
@@ -106,7 +111,19 @@ export default {
   flex: 1;
 }
 
-
+.loading {
+  background-color: #efefef;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  img{
+    @include center();
+    width: 2rem;
+  }
+}
 
 
 

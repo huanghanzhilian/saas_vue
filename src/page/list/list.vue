@@ -9,7 +9,7 @@
         <input type="submit" value="搜索" name="submit" class="search_submit" @click.prevent="searchTarget('')">
       </form>
     </header>
-    <ul class="exchange_list_wrap" v-load-more="loaderMore">
+    <ul class="exchange_list_wrap" v-if="pageStatus" v-load-more="loaderMore">
       <router-link :to="{path: '/activityDetail', query:{id:item.id}}" tag="li" class="dopser_item" v-for="item in orderListArr">
         <div class="dopser_item_l">
           <img :src="item.roadcastImg" @error="imgError($event)">
@@ -25,6 +25,9 @@
         </div>
       </router-link>
     </ul>
+    <div class="loading" v-else>
+      <img src="../../images/loading.gif">
+    </div>
     <p v-if="orderLoading" class="empty_data">加载中...</p>
     <p v-if="touchend" class="empty_data">没有更多了</p>
   </div>
@@ -49,6 +52,8 @@ export default {
       searchValue: '', // 搜索内容
       oldSearchValue:'',//旧值
       isInitSearchValue:true,//是否是初始化状态的搜索框
+
+      pageStatus:false,
     }
   },
   //创建前
@@ -139,6 +144,7 @@ export default {
     async initData() {
       //获取数据
       let res = await getProductList(this.page, this.querySize,this.searchValue);
+      this.pageStatus=true;
       this.orderListArr = [...res.data.row];
       //如果当前页等于总页数 到底了
       if (res.data.pageAmount == res.data.pageNow) {
@@ -203,7 +209,19 @@ export default {
   background-color: #fff !important;
 }
 
-
+.loading {
+  background-color: #efefef;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  img{
+    @include center();
+    width: 2rem;
+  }
+}
 
 
 /*搜索 s */

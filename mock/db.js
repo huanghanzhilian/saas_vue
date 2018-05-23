@@ -23,6 +23,13 @@ module.exports = {
     "data": []
   }),
 
+
+  //首页布局模块接口
+  api_layout_control: Mock.mock({
+    "code": 0,
+    "msg": "success"
+  }),
+
   //轮播图
   api_roadcast: Mock.mock({
     "code": 0,

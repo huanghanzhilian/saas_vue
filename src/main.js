@@ -55,16 +55,17 @@ const router = new VueRouter({
 //     return Promise.reject(err);
 //   }
 // );
-/*
+
 //respone拦截器
-axios.interceptors.response.use(
+/*axios.interceptors.response.use(
   response => {
+    console.log(response)
     //console.log(response.data.code)
     if(response.data.code!=0){
       //console.log(response.data.code)
-      store.commit('SET_GLOBAL_MSG', response.data.msg);
+      //store.commit('SET_GLOBAL_MSG', response.data.msg);
       
-      //return;
+      return;
     }
     return response;
   },

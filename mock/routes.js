@@ -5,10 +5,11 @@ module.exports = {
   "/api/get/play": "/play",
 
 
+  //首页布局模块接口
+  "/api/layout/control*": "/api_layout_control",
 
 
-
-  //首页
+  //首页轮播图接口
   "/api/roadcast*": "/api_roadcast",
 
   //首页三栏布局数据

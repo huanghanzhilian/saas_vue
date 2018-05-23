@@ -1,45 +1,50 @@
 <template>
   <div class="activityDetail_container">
-    <div class="activity_top">
-      <div class="activity_top_wrap">
-        <img :src="detailsObject.roadcastImg">
-        <div class="content">
-          <div class="order_name_box">
-            <div class="name">{{detailsObject.name}}</div>
-            <div class="order_number">
-              <span class="number1"><span class="fangda">{{detailsObject.newIntegral}}</span>积分</span>
-              <span class="number2">￥{{detailsObject.originalIntegral}}</span>
+    <div class="activityDetail_wrap" v-if="detailsObject.name">
+      <div class="activity_top">
+        <div class="activity_top_wrap">
+          <img :src="detailsObject.roadcastImg">
+          <div class="content">
+            <div class="order_name_box">
+              <div class="name">{{detailsObject.name}}</div>
+              <div class="order_number">
+                <span class="number1"><span class="fangda">{{detailsObject.newIntegral}}</span>积分</span>
+                <span class="number2">￥{{detailsObject.originalIntegral}}</span>
+              </div>
             </div>
-          </div>
-          <div class="linese">
-            <div class="linese_left">
-              <i class="iconfont icon-riqi"></i> 有效期
+            <div class="linese">
+              <div class="linese_left">
+                <i class="iconfont icon-riqi"></i> 有效期
+              </div>
+              <div class="linese_right">{{detailsObject.newTime}} 至 {{detailsObject.oldTime}}</div>
             </div>
-            <div class="linese_right">{{detailsObject.newTime}} 至 {{detailsObject.oldTime}}</div>
           </div>
         </div>
       </div>
+      <div class="activity_content">
+        <div class="title">商品详情</div>
+        <div class="describe">奥利奥（Oreo）Mini原味小饼干零食 55g（新老包装随机发货） </div>
+        <div class="title2">使用流程</div>
+        <ol class="text_list">
+          <li class="text_item">手动阀手动阀手动阀手动阀<a href="#">酷我音乐</a>反浪费口水防空炮付款<a href="#">酷我音乐</a>卡金佛奥卡福叫法叫</li>
+          <li class="text_item">gsggrrh发给我日日通过认为如果温热阀手动阀卡金佛奥卡福叫法叫</li>
+          <li class="text_item">手dfdsafsafafrdhryr奥卡福叫法叫</li>
+        </ol>
+      </div>
+      <div class="activity_content">
+        <div class="title">重要声明</div>
+        <ol class="text_list text_listOne">
+          <li class="text_item">手动阀手动阀手动阀手动阀佛奥卡福叫法叫</li>
+          <li class="text_item">gsggrrh发给我日日通过认为如果温热阀手动阀卡金佛奥卡福叫法叫</li>
+          <li class="text_item">手dfdsafsafafrdhryr奥卡福叫法叫</li>
+        </ol>
+      </div>
+      <div class="confirm_wrap">
+        <span class="confirm_btn" :class="{active:detailsObject.status}">{{detailsObject.status?'马上兑换':'已兑换'}}</span>
+      </div>
     </div>
-    <div class="activity_content">
-      <div class="title">商品详情</div>
-      <div class="describe">奥利奥（Oreo）Mini原味小饼干零食 55g（新老包装随机发货） </div>
-      <div class="title2">使用流程</div>
-      <ol class="text_list">
-        <li class="text_item">手动阀手动阀手动阀手动阀<a href="#">酷我音乐</a>反浪费口水防空炮付款<a href="#">酷我音乐</a>卡金佛奥卡福叫法叫</li>
-        <li class="text_item">gsggrrh发给我日日通过认为如果温热阀手动阀卡金佛奥卡福叫法叫</li>
-        <li class="text_item">手dfdsafsafafrdhryr奥卡福叫法叫</li>
-      </ol>
-    </div>
-    <div class="activity_content">
-      <div class="title">重要声明</div>
-      <ol class="text_list text_listOne">
-        <li class="text_item">手动阀手动阀手动阀手动阀佛奥卡福叫法叫</li>
-        <li class="text_item">gsggrrh发给我日日通过认为如果温热阀手动阀卡金佛奥卡福叫法叫</li>
-        <li class="text_item">手dfdsafsafafrdhryr奥卡福叫法叫</li>
-      </ol>
-    </div>
-    <div class="confirm_wrap">
-      <span class="confirm_btn" :class="{active:detailsObject.status}">{{detailsObject.status?'马上兑换':'已兑换'}}</span>
+    <div class="loading" v-else>
+      <img src="../../images/loading.gif">
     </div>
   </div>
 </template>
@@ -132,6 +137,22 @@ export default {
   padding-bottom: 1.6rem;
 }
 
+.activityDetail_wrap {}
+
+.loading {
+  background-color: #efefef;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  img{
+    @include center();
+    width: 2rem;
+  }
+}
+
 
 .activity_top {
   .activity_top_wrap {
@@ -169,10 +190,10 @@ export default {
       .linese {
         @include fj;
         padding: .15rem 0 0 0;
-        .linese_left{
+        .linese_left {
           color: $fontB;
         }
-        .linese_right{
+        .linese_right {
           color: $fontB;
         }
       }

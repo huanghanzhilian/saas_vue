@@ -1,6 +1,6 @@
 <template>
   <div class="exchange_container">
-    <ul class="exchange_list_wrap" v-load-more="loaderMore">
+    <ul class="exchange_list_wrap" v-load-more="loaderMore" v-if="pageStatus">
       <router-link tag="li" :to="{path: '/orderDetail', query:{id:item.id}}" class="dopser_item" v-for="item in orderListArr">
         <div class="dopser_item_l">
           <img :src="item.roadcastImg">
@@ -17,6 +17,9 @@
         </div>
       </router-link>
     </ul>
+    <div class="loading" v-else>
+      <img src="../../images/loading.gif">
+    </div>
     <p v-if="orderLoading" class="empty_data">加载中...</p>
     <p v-if="touchend" class="empty_data">没有更多了</p>
   </div>
@@ -37,6 +40,8 @@ export default {
       nothing: false, //无数据
       orderLoading: false, //显示加载动画
       preventRepeatReuqest: false, //到达底部加载数据，防止重复加载
+
+      pageStatus:false,
 
     }
   },
@@ -95,6 +100,7 @@ export default {
     async initData() {
       //获取数据
       let res = await getExchangeList(this.page, this.querySize);
+      this.pageStatus=true;
       this.orderListArr = [...res.data.row];
       //如果当前页等于总页数 到底了
       if (res.data.pageAmount == res.data.pageNow) {
@@ -153,6 +159,20 @@ export default {
 
 .exchange_container {
   background-color: #fff !important;
+}
+
+.loading {
+  background-color: #efefef;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999999;
+  width: 100%;
+  height: 100%;
+  img{
+    @include center();
+    width: 2rem;
+  }
 }
 
 .exchange_list_wrap {

@@ -1,5 +1,9 @@
 import http from './public'
 
+//首页布局模块接口
+export const getLayoutControl= () => {
+  return http.fetchGet('/api/layout/control')
+};
 
 //首页轮播图
 export const roadcastList = () => {
