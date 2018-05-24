@@ -21,31 +21,46 @@ export default [{
       path: '/',
       name: 'msite',
       component: msite,
-      meta: { keepAlive: true },
+      meta: {
+        keepAlive: true,
+        title: '拉卡拉-积分购'
+      },
     },
     //兑换列表页
     {
       path: '/exchangeList',
       name: 'exchangeList',
-      component: exchangeList
+      component: exchangeList,
+      meta: {
+        title: '兑换记录'
+      },
     },
     //搜索以及列表页面
     {
       path: '/list',
       name: 'list',
-      component: list
+      component: list,
+      meta: {
+        title: '积分购列表'
+      },
     },
     //订单详情页面
     {
       path: '/orderDetail',
       name: 'orderDetail',
-      component: orderDetail
+      component: orderDetail,
+      meta: {
+        title: '积分购状态'
+      },
     },
     //活动详情页面
     {
       path: '/activityDetail',
       name: 'activityDetail',
-      component: activityDetail
+      component: activityDetail,
+      meta: {
+        title: '积分购详情'
+      },
     },
   ]
 }]
